@@ -1,0 +1,33 @@
+/* .content-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 5fr));
+    grid-gap: 0 10px;
+    grid-auto-rows: 10px;
+}
+
+.content-list img{
+    width: 250px;
+    grid-row-end: span 2;
+} */
+
+
+.content-list{
+    display: flex;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.ui.card{
+    margin : 20px;
+}
+
+.ui.card:first-child{
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.ui.card>.image>img{
+    padding: 3px;
+}
+

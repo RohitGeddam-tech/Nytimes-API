@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Api from './Api';
+import ButtonClick from './ButtonClick';
+import ContentList from './ContentList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+
+  state = {content: []};
+
+  // constructor (){
+  //   super();
+  //   Api.get('world.json?api-key=QxNol8gzE0dtO1UPLyaexNJx7ogvRc20').then
+  //   (
+  //     res => {console.log(res.data.results)
+  //       this.setState({ content: res.data.results })
+  //     }
+  //   )
+  // }
+
+  onButtonClick = () => {
+    Api.get('world.json?api-key=QxNol8gzE0dtO1UPLyaexNJx7ogvRc20').then(
+      res => {console.log(res.data.results)
+        this.setState({ content: res.data.results })
+      })
+      
+  console.log(this.state.content.title)
+  }
+
+  render() {
+      return (
+          <div className='ui container'>
+            <div>
+              <ButtonClick onClick={this.onButtonClick} auth='World News' />
+              <ContentList News={this.state.content}/>
+            </div>
+          </div>
+      );
+  }
 }
-
 export default App;
